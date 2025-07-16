@@ -1,0 +1,40 @@
+# Function: Temperature Modeling
+def Temperature_modeling(a, b, c, time):
+    temp = a * time**2 + b * time + c
+    return temp
+
+# Version 1: Hardcoding the variables
+a = -0.2
+b = 2.5
+c = 15
+time = 5
+
+temp = Temperature_modeling(a, b, c, time)
+print(f"The temperature at time {time} is {temp:.1f}°C\n")
+
+# Version 2: Keyboard Input
+a = float(input("Enter a: "))
+b = float(input("Enter b: "))
+c = float(input("Enter c: "))
+time = float(input("Enter time: "))
+
+temp = Temperature_modeling(a, b, c, time)
+print(f"The temperature at time {time} is {temp:.1f}°C\n")
+
+# Version 3: Single input from text file
+with open("Weather_Single.txt", "r") as file:
+    line = file.readline().split()
+    a = float(line[0])
+    b = float(line[1])
+    c = float(line[2])
+    time = float(line[3])
+
+temp = Temperature_modeling(a, b, c, time)
+print(f"The temperature at time {time} is {temp:.1f}°C\n")
+
+# Version 4: Multiple input from text file
+with open("Weather_Multiple.txt", "r") as file:
+    for line in file:
+        a, b, c, time = map(float, line.strip().split())
+        temp = Temperature_modeling(a, b, c, time)
+        print(f"The temperature at time {time} is {temp:.1f}°C")
